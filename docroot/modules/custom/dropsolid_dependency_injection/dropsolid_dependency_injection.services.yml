@@ -1,0 +1,4 @@
+services:
+  dropsolid_dependency_injection.pictures:
+    class: Drupal\dropsolid_dependency_injection\Services\PicturesService
+    arguments: ["@http_client"]
