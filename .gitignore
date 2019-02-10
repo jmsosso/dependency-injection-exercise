@@ -41,3 +41,6 @@ docroot/sites/simpletest
 
 # Ignore vendor files
 docroot/vendor
+
+# Ignore Docker volumes
+volumes
