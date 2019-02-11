@@ -1,0 +1,25 @@
+<?
+
+/**
+ * Implements hook_install().
+ */
+function dropsolid_dependency_injection_install() {
+  $config = \Drupal::configFactory()->getEditable('system.mail');
+
+  $mail_plugins = $config->get('interface');
+  $mail_plugins['default'] = 'mail_redirect';
+
+  $config->set('interface', $mail_plugins)->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function dropsolid_dependency_injection_uninstall() {
+  $config = \Drupal::configFactory()->getEditable('system.mail');
+
+  $mail_plugins = $config->get('interface');
+  $mail_plugins['default'] = 'php_mail';
+
+  $config->set('interface', $mail_plugins)->save();
+}
