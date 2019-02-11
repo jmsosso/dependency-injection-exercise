@@ -2,12 +2,13 @@ version: '3.7'
 
 services:
   drupal:
-    image: drupal:8
+    image: servinube/drupal:8.5-dev
     environment:
       HOME: /var/www/home
     volumes:
-      - ./docroot:/var/www/html
+      - ./docroot:/var/www/web
       - ./volumes/home:/var/www/home
+      - ./volumes/ssmtp.conf:/etc/ssmtp/ssmtp.conf
     ports:
       - "8080:80"
     depends_on:
@@ -34,7 +35,9 @@ services:
     depends_on:
       - mysql
 
-  mailserver:
+  mailcatcher:
     image: mailhog/mailhog
+    ports:
+      - "8082:8025"
     depends_on:
       - drupal
