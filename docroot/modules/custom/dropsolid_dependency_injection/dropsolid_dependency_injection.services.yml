@@ -2,7 +2,14 @@ services:
   dropsolid_dependency_injection.pictures:
     class: Drupal\dropsolid_dependency_injection\Services\PicturesService
     arguments: ["@http_client"]
+
   dropsolid_dependency_injection.breadcrumb:
     class: Drupal\dropsolid_dependency_injection\CustomBreadcrumbBuilder
     tags:
       - { name: breadcrumb_builder, priority: 100 }
+
+  dropsolid_dependency_injection.language_access:
+    class: Drupal\dropsolid_dependency_injection\EventSubscriber\LanguageAccessSubscriber
+    arguments: ['@language_manager']
+    tags:
+      - { name: event_subscriber }
