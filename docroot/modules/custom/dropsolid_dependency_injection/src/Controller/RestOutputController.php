@@ -49,10 +49,17 @@ class RestOutputController extends ControllerBase implements ContainerInjectionI
    *   The array
    */
   public function showPhotos() {
+    $languageManager = \Drupal::languageManager();
+
     $build = [
       '#cache' => [
         'max-age' => 60,
         'contexts' => ['url'],
+      ],
+      'language_manager_test' => [
+        '#type' => 'html_tag',
+        '#tag' => 'p',
+        '#value' => $languageManager->sayHello(),
       ],
     ];
 
