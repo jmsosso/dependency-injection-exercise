@@ -48,6 +48,9 @@ If you have Docker installed in your machine you just need to run:
 
 ```
 docker-compose up -d drupal phpmyadmin mailcatcher
+composer install -d docroot/ --ignore-platform-reqs
+./drush si dropsolid_example --db-url=mysql://drupal:drupal@mysql/drupal8
+chmod -R a+w docroot/sites/default/files
 ```
 
 To get the site running with phpMyAdmin and also a mail catcher tool.

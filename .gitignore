@@ -43,4 +43,5 @@ docroot/sites/simpletest
 docroot/vendor
 
 # Ignore Docker volumes
-volumes
+volumes/*
+!volumes/ssmtp.conf
